@@ -18,14 +18,42 @@
     <body>
         <!-- Navigation-->
         <nav class="navbar navbar-light bg-light sticky-top">
-            <div class="container-fluid mx-auto">
-                <div class="d-flex">
+            <div class="container-fluid">
+                <div class="d-flex mx-5">
                     <a href="#"><img src="./assets/img/logo.jpg" class="img-fluid" width="50" height="30" alt="logo"></a>
                     <a class="navbar-brand" href="#!"><h2>KourseHub</h2></a>
                 </div>
-                <div class="justify-content-end">
-                    <a class="btn btn-dark" href="#signup">Sign Up</a>
-                    <a class="btn btn-white border-dark" href="#signup">Login</a>
+                <div class="d-flex justify-content-end">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle mx-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">EN</button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item" href="#">EN</a></li>
+                        <li><a class="dropdown-item" href="#">简体中文</a></li>
+                        <li><a class="dropdown-item" href="#">日本語</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <a href="registration.html"><button type="button" class="btn btn-dark mx-2">Sign Up</button></a>
+                        <a href="login.html"><button type="button" class="btn btn-white mx-3 border-dark">Login</button></a>
+                    </div>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+                        <div class="offcanvas-header">
+                            <h4 class="offcanvas-title">Menu</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <hr>
+                        <div class="navbar-nav offcanvas-body">
+                            <ul class="list-unstyled fs-5 justify-content-end">
+                                <li><a class="nav-link" aria-current="page" href="#">Home</a></li>
+                                <li><a class="nav-link" href="resource.html">Resources</a></li>
+                                <li><a class="nav-link" href="catalog.html">Explore Our Courses</a></li>
+                                <li><a class="nav-link" href="about.html">About Us</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -39,12 +67,20 @@
                             <h1>Education,</h1>
                             <h1 class="mb-5">Redefined.</h1>
                             <p class="fs-4 fw-light mh-txt mb-5">Any subject, in any languange, on any device, for everyone.</p>
-                                <div class="row">
+                                <div class="row mb-5">
                                     <div class="col-auto">
                                         <button class="btn btn-dark btn-md" id="submitButton" type="submit">Sign Up for Free</button>
                                     </div>
                                 </div>
+                            <p>Or download the app:</p>
+                            <div>
+                                <a href="https://github.com"><img src="/src/assets/img/appstore.jpg" alt="App Store" style="width: 150px; height: 45px;"></a>
+                                <a href="https://youtube.com"><img src="/src/assets/img/googleplay.jpg" alt="Google Play" style="width: 170px; height: 67px;"></a>
+                            </div>
                         </div>
+                    </div>
+                    <div class="col-xl-4 m-auto">
+                        <img src="/src/assets/img/illustrate.jpg" style="width: 512px; height: 512px;">
                     </div>
                 </div>
             </div>
@@ -191,7 +227,7 @@
                             <li class="list-inline-item">⋅</li>
                             <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
                         </ul>
-                        <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2023. All Rights Reserved.</p>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; KourseHub 2024. All Rights Reserved.</p>
                     </div>
                     <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
                         <ul class="list-inline mb-0">
