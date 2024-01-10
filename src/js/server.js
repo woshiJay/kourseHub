@@ -16,6 +16,7 @@ admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     databaseURL: "https://koursehub-default-rtdb.asia-southeast1.firebasedatabase.app"
 });
+const db = admin.database();
 
 // ----------------------------------------------------------------------
 // Initializing of Firebase SDK
@@ -30,56 +31,74 @@ const firebaseConfig = {
     storageBucket: "YOUR_STORAGE_BUCKET",
     messagingSenderId: "YOUR_SENDER_ID",
     appId: "YOUR_APP_ID"
-  };
+};
 
-  firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 
 // Sign up route
 app.post('/signup', async (req, res) => {
+    
     const { username, email, password } = req.body;
-
+    if (!username || !email || !password) {
+        res.status(400).json({ alert: 'Please ensure that all fields are filled.' });
+        return;
+    }
     const auth = getAuth();
-    console.log("I am receiving signup request!")
-    try {
-        const user = await auth.createUser({
-            email: email,
-            password: password
-        })
+
+    const userRecord = await auth.createUser({
+        email: email,
+        password: password
+    })
         .catch((error) => {
             if (error.code === 'auth/email-already-exists') {
-                console.log('User already exists')
+                res.status(400).json({ alert: 'Email already exists! Please proceed to Login.' });
             } else {
-                console.log('Error creating user:', error)
+                res.status(400).json({alert: error.code})
             }
         })
 
-        res.status(200).json({ message: 'User created successfully', user });
-    } catch (error) {
-        console.log("ERROR", error)
-    }
+    const userId = userRecord.uid;
+    const userRef = db.ref(`users/${userId}`);
+    await userRef.set({ username: username })
+    res.status(200).json({ redirect: '/dist/login.html' });
 });
 
 // Sign in route
 app.post('/signin', async (req, res) => {
     const { email, password } = req.body;
-
     const firebaseAuthentication = firebaseAuth.getAuth();
-    console.log("I am receiving sign in request!")
-    try {
-        firebaseAuth.signInWithEmailAndPassword(firebaseAuthentication, email, password).then((userCredential) => {
+
+    firebaseAuth.signInWithEmailAndPassword(firebaseAuthentication, email, password)
+        .then((userCredential) => {
             // Signed in
-            const user = userCredential.user;
-            res.status(200).json({ message: 'User signed in successfully', user });
-        
+            res.status(200).json({ message: "User signed in successfully!", uid: userCredential.user.uid})
         })
-        
-    } catch (error) {
-        console.log("ERROR", error)
-        res.status(400).json({ message: 'Invalid credentials' });
-    }
+        .catch((error) => {
+            res.status(401).json({ alert: 'Invalid email or password! Please try again.' });
+        });
 });
 
+app.get('/get-username', async (req, res) => {
+    const userId = req.query.uid;
+    if (!userId) {
+        return res.status(400).json({ alert: "User ID is required!" });
+    }
+
+    const userRef = db.ref(`users/${userId}`);
+    try {
+        const snapshot = await userRef.once('value');
+        if (snapshot.exists()) {
+            const username = snapshot.val().username;
+            return res.status(200).json({ username: username });
+        } else {
+            return res.status(404).json({ alert: "User does not exist!" });
+        }
+    } catch (err) {
+        console.error("Error fetching username: ", err);
+        return res.status(500).json({ alert: "Error fetching username!" });
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
