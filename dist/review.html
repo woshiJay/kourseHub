@@ -1,63 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <!-- (Include your existing head here) -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>KourseHub</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
-    <!-- Google fonts-->
-    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
+  <!-- (Include your existing head here) -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+  <title>KourseHub</title>
+  <!-- Favicon-->
+  <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="css/styles.css" rel="stylesheet" />
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-light bg-light sticky-top">
-        <div class="container-fluid">
-            <div class="d-flex mx-5">
-                <a href="#"><img src="./assets/img/logo.jpg" class="img-fluid" width="50" height="30" alt="logo"></a>
-                <a class="navbar-brand" href="#!"><h2>KourseHub</h2></a>
+  <!-- Navigation -->
+  <nav class="navbar navbar-light bg-light sticky-top">
+    <div class="container-fluid">
+        <div class="d-flex mx-5">
+            <a href="#"><img src="./assets/img/logo.jpg" class="img-fluid" width="50" height="30" alt="logo"></a>
+            <a class="navbar-brand" href="#!"><h2>KourseHub</h2></a>
+        </div>
+        <div class="d-flex justify-content-end">
+            <div class="dropdown">
+                <button class="btn dropdown-toggle mx-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">EN</button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" href="#">EN</a></li>
+                    <li><a class="dropdown-item" href="#">简体中文</a></li>
+                    <li><a class="dropdown-item" href="#">日本語</a></li>
+                </ul>
             </div>
-            <div class="d-flex justify-content-end">
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle mx-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">EN</button>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                        <li><a class="dropdown-item" href="#">EN</a></li>
-                        <li><a class="dropdown-item" href="#">简体中文</a></li>
-                        <li><a class="dropdown-item" href="#">日本語</a></li>
-                    </ul>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
+                <div class="offcanvas-header">
+                    <h4 class="offcanvas-title">Menu</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar">
-                    <div class="offcanvas-header">
-                        <h4 class="offcanvas-title">Menu</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                    </div>
-                    <hr>
-                    <div class="navbar-nav offcanvas-body">
-                        <ul class="list-unstyled fs-5 justify-content-end">
-                            <li><a class="nav-link" aria-current="page" href="course.html">Course Home</a></li>
-                            <li><a class="nav-link" href="resource.html">Resource</a></li>
-                            <li><a class="nav-link" href="catalog.html">Catalog</a></li>
-                            <li><a class="nav-link" href="profile.html">Profile</a></li>
-                            <li><a class="nav-link" href="about.html">About</a></li>                        
-                            <li><a class="nav-link" href="index.html">Logout</a></li>                        
-                        </ul>
-                    </div>
+                <hr>
+                <div class="navbar-nav offcanvas-body">
+                    <ul class="list-unstyled fs-5 justify-content-end">
+                        <li><a class="nav-link" aria-current="page" href="course.html">Course Home</a></li>
+                        <li><a class="nav-link" href="resource.html">Resource</a></li>
+                        <li><a class="nav-link" href="catalog.html">Catalog</a></li>
+                        <li><a class="nav-link" href="profile.html">Profile</a></li>
+                        <li><a class="nav-link" href="about.html">About</a></li>                        
+                        <li><a class="nav-link" href="index.html">Logout</a></li>                        
+                    </ul>
                 </div>
             </div>
         </div>
-    </nav>
+    </div>
+  </nav>
 
-<div class="container my-5">
+  <div class="container my-5">
     <h3 class="mb-3">Review with A.I.</h3>
     <div class="card">
       <div class="card-body">
@@ -69,29 +71,29 @@
           <div class="form-check">
             <input class="form-check-input" type="radio" name="question1" id="option1" checked disabled>
             <label class="form-check-label" for="option1">
-                Retained Earnings
+              Retained Earnings
               <span class="text-danger">&#10060;</span>
             </label>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="question1" id="option2" disabled>
             <label class="form-check-label" for="option2">
-                Issuing of new stock
+              Issuing of new stock
               <span class="text-success">&#10004;</span>
             </label>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="question1" id="option3" disabled>
             <label class="form-check-label" for="option2">
-                Factoring receivables
-                <span class="text-danger">&#10060;</span>
+              Factoring receivables
+              <span class="text-danger">&#10060;</span>
             </label>
           </div>
           <div class="form-check">
             <input class="form-check-input" type="radio" name="question1" id="option4" disabled>
             <label class="form-check-label" for="option2">
-                Depreciation allowance
-                <span class="text-danger">&#10060;</span>
+              Depreciation allowance
+              <span class="text-danger">&#10060;</span>
             </label>
           </div>
           <!-- Additional options as needed... -->
@@ -100,19 +102,34 @@
     </div>
     <!-- Explanation Block -->
     <div class="card mt-5">
-        <div class="card-body">
-            <div class="my-3">
-                <p>The correct answer is <strong>Issuing of new stock.</strong><br><br>Here's why:</p>
-                <!-- Resources and links -->
-                <ul>
-                    <li>Retained earnings, factoring receivables, and depreciation allowance are all internal sources of financing. They come from the business's own operations and activities, without needing to raise capital from external sources like investors or lenders.</li>
-                    <li>Issuing new stock is an external source of financing. When a company issues new stock, it is selling ownership stakes in the business to raise capital. This brings in new money from outside the company, unlike the other options which generate funding from existing resources.</li>
-                </ul>
-                <p>Therefore, the answer to the question is <strong>Issuing of new stock</strong> because it is the only option that is not an internal source of financing for a business.</p>
-                <p>I hope this explanation helps! Let me know if you have any other questions.</p>
-                </p>            
-            </div>
-        </div>
+      <div class="card-body">
+        <div class="my-3">
+          <script>
+            let promptmsg = "Which of the following is NOT a common source of internal financing for a business?\nRetained Earnings ❌\nIssuing of new stock ✔\nFactoring receivables ❌\nDepreciation allowance ❌\n\nReply to this as if you're a course teacher reviewing your student's wrong answer, his answer is wrong and the correct answer is Issuing of new stock AND YOUR REPLY SHOULD BE STRICTLY WITH HTML FORMAT TAGS NO DIV TAGS AND ACT AS IF YOU'RE HIS TEACHER REVIEWING HIS QUIZ ANSWER.";
+            fetch('http://localhost:5501/ai-review', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ promptmsg })
+            })
+              .then(resp => resp.json())
+              .then(data => {
+                console.log(data.text);
+                data.text = data.text.substring(data.text.indexOf("\n") + 1, data.text.lastIndexOf("\n"));
+                console.log(data.text);
+                let newElement = document.createElement('div');
+                newElement.innerHTML = data.text;
+                document.getElementById("ai-reply").appendChild(newElement);
+              })
+              .catch(error => {
+                console.error("Error:", error);
+              })
+          </script>
+          <p id="ai-reply">
+
+          </p>
+      </div>
     </div>
     <!-- Pagination or navigation buttons -->
     <div class="d-flex justify-content-between my-4">
@@ -123,49 +140,49 @@
 </body>
 <!-- Footer-->
 <footer class="footer bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                <ul class="list-inline mb-2">
-                    <li class="list-inline-item"><a href="#!">About</a></li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item"><a href="#!">Contact</a></li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
-                    <li class="list-inline-item">⋅</li>
-                    <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
-                </ul>
-                <p class="text-muted small mb-4 mb-lg-0">&copy; KourseHub 2024. All Rights Reserved.</p>
-            </div>
-            <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item me-4">
-                        <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                    </li>
-                    <li class="list-inline-item me-4">
-                        <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+              <ul class="list-inline mb-2">
+                  <li class="list-inline-item"><a href="#!">About</a></li>
+                  <li class="list-inline-item">⋅</li>
+                  <li class="list-inline-item"><a href="#!">Contact</a></li>
+                  <li class="list-inline-item">⋅</li>
+                  <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
+                  <li class="list-inline-item">⋅</li>
+                  <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
+              </ul>
+              <p class="text-muted small mb-4 mb-lg-0">&copy; KourseHub 2024. All Rights Reserved.</p>
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+              <ul class="list-inline mb-0">
+                  <li class="list-inline-item me-4">
+                      <a href="#!"><i class="bi-facebook fs-3"></i></a>
+                  </li>
+                  <li class="list-inline-item me-4">
+                      <a href="#!"><i class="bi-twitter fs-3"></i></a>
+                  </li>
+                  <li class="list-inline-item">
+                      <a href="#!"><i class="bi-instagram fs-3"></i></a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+  </div>
 </footer>
 <script>
-    // Sign Out
-    const signOutButton = document.getElementById('signOutButton');
-    signOutButton.addEventListener('click', () => {
-        sessionStorage.removeItem('userId');
-        fetch(`http://localhost:5501/signout`)
-            .then(resp => resp.json())
-            .then(data => {
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-    });
+  // Sign Out
+  const signOutButton = document.getElementById('signOutButton');
+  signOutButton.addEventListener('click', () => {
+      sessionStorage.removeItem('userId');
+      fetch(`http://localhost:5501/signout`)
+          .then(resp => resp.json())
+          .then(data => {
+          })
+          .catch(error => {
+              console.error("Error:", error);
+          });
+  });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
@@ -175,4 +192,5 @@
 <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
 </html>
