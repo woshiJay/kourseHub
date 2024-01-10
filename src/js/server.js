@@ -116,7 +116,7 @@ app.get('/get-username', async (req, res) => {
     }
 });
 
-// AI Review route
+// AI Chatbot + Review route
 app.post('/ai-review', async (req, res) => {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
     const promptMsg = req.body.promptmsg;
