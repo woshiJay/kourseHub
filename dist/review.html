@@ -51,7 +51,7 @@
                         <li><a class="nav-link" href="catalog.html">Catalog</a></li>
                         <li><a class="nav-link" href="profile.html">Profile</a></li>
                         <li><a class="nav-link" href="about.html">About</a></li>                        
-                        <li><a class="nav-link" href="index.html">Logout</a></li>                        
+                        <li><a class="nav-link" id="signOutButton" href="index.html">Logout</a></li>                        
                     </ul>
                 </div>
             </div>
@@ -115,9 +115,7 @@
             })
               .then(resp => resp.json())
               .then(data => {
-                console.log(data.text);
                 data.text = data.text.substring(data.text.indexOf("\n") + 1, data.text.lastIndexOf("\n"));
-                console.log(data.text);
                 let newElement = document.createElement('div');
                 newElement.innerHTML = data.text;
                 document.getElementById("ai-reply").appendChild(newElement);
