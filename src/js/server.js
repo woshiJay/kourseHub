@@ -24,13 +24,13 @@ const db = admin.database();
 const firebase = require("firebase/app");
 const firebaseAuth = require("firebase/auth");
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    databaseURL: "YOUR_DATABASE_URL",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyAKW67y2atOvo9w_l47Lcg-14vHYik1JZw",
+    authDomain: "koursehub.firebaseapp.com",
+    databaseURL: "https://koursehub-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    projectId: "koursehub",
+    storageBucket: "koursehub.appspot.com",
+    messagingSenderId: "955512527180",
+    appId: "1:955512527180:web:b045670ccc00ef938a97e9"
 };
 
 firebase.initializeApp(firebaseConfig);
@@ -38,7 +38,7 @@ firebase.initializeApp(firebaseConfig);
 
 // Sign up route
 app.post('/signup', async (req, res) => {
-    
+
     const { username, email, password } = req.body;
     if (!username || !email || !password) {
         res.status(400).json({ alert: 'Please ensure that all fields are filled.' });
@@ -54,7 +54,7 @@ app.post('/signup', async (req, res) => {
             if (error.code === 'auth/email-already-exists') {
                 res.status(400).json({ alert: 'Email already exists! Please proceed to Login.' });
             } else {
-                res.status(400).json({alert: error.code})
+                res.status(400).json({ alert: error.code })
             }
         })
 
@@ -72,13 +72,24 @@ app.post('/signin', async (req, res) => {
     firebaseAuth.signInWithEmailAndPassword(firebaseAuthentication, email, password)
         .then((userCredential) => {
             // Signed in
-            res.status(200).json({ message: "User signed in successfully!", uid: userCredential.user.uid})
+            res.status(200).json({ message: "User signed in successfully!", uid: userCredential.user.uid })
         })
         .catch((error) => {
             res.status(401).json({ alert: 'Invalid email or password! Please try again.' });
         });
 });
 
+// Sign out route
+app.get('/signout', async (req, res) => {
+    firebaseAuth.getAuth().signOut()
+        .then(() => {
+            res.status(200).json({ message: "User signed out successfully!" })
+        })
+        .catch((error) => {
+        });
+});
+
+// Get username route
 app.get('/get-username', async (req, res) => {
     const userId = req.query.uid;
     if (!userId) {
