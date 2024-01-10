@@ -24,14 +24,14 @@ const db = admin.database();
 const firebase = require("firebase/app");
 const firebaseAuth = require("firebase/auth");
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    databaseURL: "YOUR_DATABASE_URL",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
-};
+    apiKey: "AIzaSyAKW67y2atOvo9w_l47Lcg-14vHYik1JZw",
+    authDomain: "koursehub.firebaseapp.com",
+    databaseURL: "https://koursehub-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    projectId: "koursehub",
+    storageBucket: "koursehub.appspot.com",
+    messagingSenderId: "955512527180",
+    appId: "1:955512527180:web:b045670ccc00ef938a97e9"
+  };
 
 firebase.initializeApp(firebaseConfig);
 
