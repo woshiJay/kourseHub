@@ -35,6 +35,11 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
+// ----------------------------------------------------------------------
+// Initializing of VertexAI Generative Model
+// ----------------------------------------------------------------------
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+const genAI = new GoogleGenerativeAI("AIzaSyDT78vWMf3PSG65mylFkLYrfis0ug_CBSM");
 
 // Sign up route
 app.post('/signup', async (req, res) => {
@@ -110,6 +115,16 @@ app.get('/get-username', async (req, res) => {
         return res.status(500).json({ alert: "Error fetching username!" });
     }
 });
+
+// AI Review route
+app.post('/ai-review', async (req, res) => {
+    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    const promptMsg = req.body.promptmsg;
+    const result = await model.generateContent(promptMsg);
+    const resp = await result.response;
+    const text = resp.text();
+    return res.status(200).json({ text: text });
+})
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
