@@ -183,6 +183,14 @@ const CareerCounseling = mongoose.model('CareerCounseling', careerCounselingSche
 const CourseAssessment = mongoose.model('CourseAssessment', courseAssessmentSchema);
 const Question = mongoose.model('Question', questionSchema);
 
+// Export the models
+module.exports = {
+    User,
+    CareerCounseling,
+    CourseAssessment,
+    Question
+  };
+
 // Route to handle POST request
 app.post('/upload-user', async (req, res) => {
     try {
@@ -202,22 +210,16 @@ app.post('/upload-user', async (req, res) => {
 
 // // example for adding user
 // const newUser = new User({
-//   user_name: 'John Doe',
-//   user_email: 'johndoe@example.com',
-//   user_age: 12
+//   user_name: 'Sattish',
+//   user_email: 'STH@example.com',
+//   user_age: 21
 // });
 
 // newUser.save()
 //   .then(doc => console.log('User added:', doc))
 //   .catch(err => console.error('Error adding user:', err));
 
-// Export the models
-// module.exports = {
-//   User,
-//   CareerCounseling,
-//   CourseAssessment,
-//   Question
-// };
+
 
 // #####################################################################################################
 
