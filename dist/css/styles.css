@@ -4215,8 +4215,22 @@ textarea.form-control-lg {
   color: var(--bs-card-color);
 }
 
+.course {
+  height: 100px;
+}
+
+.quiz-board {
+  height: 320px;
+}
+
 .card-title {
   margin-bottom: var(--bs-card-title-spacer-y);
+}
+
+.card-title, .card-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .card-subtitle {
@@ -4285,9 +4299,9 @@ textarea.form-control-lg {
   width: 100%;
 }
 
+/* Course sections */
 .course-rec {
   height: 200px;
-  width: 100%;
   object-fit: cover;
 }
 
@@ -5890,7 +5904,7 @@ textarea.form-control-lg {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 15%;
+  width: 5%;
   padding: 0;
   color: #fff;
   text-align: center;

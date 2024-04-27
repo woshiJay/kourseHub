@@ -82,38 +82,122 @@
         <!-- Recommendation -->
         <div class="col mt-4">
             <h3 class="mb-4">Recommended Courses For You</h3>
-            <div class="row row-cols-1 row-cols-md-3 g-5">
-                <!-- Card 1 -->
-                <div class="col">
-                    <div class="card">
-                        <img src="/dist/assets/img/cat1.jpg" class="course-rec img-fluid" alt="Cat">
-                        <div class="card-body">
-                            <h5 class="card-title">Complete 2023 Cat Care Guide for Beginners</h5>
-                            <p class="card-text">Jonas Schmedtmann</p>
+            <!-- Carousell -->
+            <div id="courseCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <div class="row row-cols-1 row-cols-md-3 g-5">
+                            <!-- Card 1 -->
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/dist/assets/img/cat1.jpg" class="course-rec img-fluid" alt="Cat">
+                                    <div class="card-body course">
+                                        <h5 class="card-title">Cat Care Guide for Beginners</h5>
+                                        <p class="card-text">Jonas Schmedtmann</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/dist/assets/img/cat2.jpg" class="course-rec img-fluid" alt="Cat">
+                                    <div class="card-body course">
+                                        <h5 class="card-title">AWS Certified Cat Architect</h5>
+                                        <p class="card-text">Stephane Maarek</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 3 -->
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/dist/assets/img/cat3.jpg" class="course-rec img-fluid" alt="Cat">
+                                    <div class="card-body course">
+                                        <h5 class="card-title">Healthy Habits to Good Sleep</h5>
+                                        <p class="card-text">Maximilian Schwarzmüller</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row row-cols-1 row-cols-md-3 g-5">
+                            <!-- Card 4 -->
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/dist/assets/img/scientist.jpg" class="course-rec img-fluid" alt="Chemist">
+                                    <div class="card-body course">
+                                        <h5 class="card-title">Chemistry</h5>
+                                        <p class="card-text">John Dalton</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 5 -->
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/dist/assets/img/machine_learning.jpg" class="course-rec img-fluid" alt="Cat">
+                                    <div class="card-body course">
+                                        <h5 class="card-title">Machine Learning</h5>
+                                        <p class="card-text">Kate Crawford</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 6 -->
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/dist/assets/img/engineer_tech.jpg" class="course-rec img-fluid" alt="Cat">
+                                    <div class="card-body course">
+                                        <h5 class="card-title">Engineering</h5>
+                                        <p class="card-text">Archimedes</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="row row-cols-1 row-cols-md-3 g-5">
+                            <!-- Card 4 -->
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/dist/assets/img/physics.jpeg" class="course-rec img-fluid" alt="Chemist">
+                                    <div class="card-body course">
+                                        <h5 class="card-title">Physics</h5>
+                                        <p class="card-text">Richard Feynman</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 5 -->
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/dist/assets/img/gcc.jpeg" class="course-rec img-fluid" alt="Cat">
+                                    <div class="card-body course">
+                                        <h5 class="card-title">Google Cloud Architect</h5>
+                                        <p class="card-text">John Doe</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Card 6 -->
+                            <div class="col">
+                                <div class="card">
+                                    <img src="/dist/assets/img/architecture.webp" class="course-rec img-fluid" alt="Cat">
+                                    <div class="card-body course">
+                                        <h5 class="card-title">Architecture</h5>
+                                        <p class="card-text">Frank Gehry</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Card 2 -->
-                <div class="col">
-                    <div class="card">
-                        <img src="/dist/assets/img/cat2.jpg" class="course-rec img-fluid" alt="Cat">
-                        <div class="card-body">
-                            <h5 class="card-title">AWS Certified Cat Architect</h5>
-                            <p class="card-text">Stephane Maarek</p>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card 3 -->
-                <div class="col">
-                    <div class="card">
-                        <img src="/dist/assets/img/cat3.jpg" class="course-rec img-fluid" alt="Cat">
-                        <div class="card-body">
-                            <h5 class="card-title">Healthy Habits to Good Sleep</h5>
-                            <p class="card-text">Maximilian Schwarzmüller</p>
-                        </div>
-                    </div>
-                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#courseCarousel" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#courseCarousel" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>        
             </div>
+        </div>
             <!-- Continue your course -->
             <div class="row my-5">
                 <h3 class="mb-4">Continue your course</h3>

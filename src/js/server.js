@@ -41,6 +41,8 @@ firebase.initializeApp(firebaseConfig);
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 const genAI = new GoogleGenerativeAI("AIzaSyDT78vWMf3PSG65mylFkLYrfis0ug_CBSM");
 
+// ---------------------------------------------------------------------- 
+
 // Sign up route
 app.post('/signup', async (req, res) => {
 
