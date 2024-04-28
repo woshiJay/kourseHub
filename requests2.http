@@ -1,0 +1,15 @@
+# GET http://localhost:5501/get-all-career-counseling
+
+# POST http://localhost:5501/upload-career-counseling
+# Content-Type: application/json
+
+# {
+#     "user_email": "abc@example.com",
+#     "question_one_ans": "test2",
+#     "question_two_ans": "test2",
+#     "question_three_ans": "test2",
+#     "question_four_ans": "test2",
+#     "question_five_ans": "test2"
+# }
+
+# GET http://localhost:5501/get-career-counseling/123@example.com

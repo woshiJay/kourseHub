@@ -1,0 +1,15 @@
+# GET http://localhost:5501/get-all-question
+
+# POST http://localhost:5501/upload-question
+# Content-Type: application/json
+
+# {
+#     "question_id": "662e07993de49179eff4e420",
+#     "user_email": "yyt@example.com",
+#     "course": "AI",
+#     "chapter": "chapter1",
+#     "question": "who are blabla?",
+#     "answer": "im biubiubiu."
+# }
+
+GET http://localhost:5501/get-question/yyt@example.com
