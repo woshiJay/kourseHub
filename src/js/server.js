@@ -208,6 +208,153 @@ app.post('/upload-user', async (req, res) => {
     }
   });
 
+// Define a GET endpoint
+app.get('/get-all-user', async (req, res) => {
+    try {
+      // Fetch all users from the database
+      const users = await User.find();
+      
+      // Send the list of users as a response
+      res.json(users);
+    } catch (error) {
+      // If there's an error, send a 500 status code and the error message
+      res.status(500).json({ message: error.message });
+    }
+  });
+  
+  app.get('/get-user/:user_email', async (req, res) => {
+    try {
+        const { user_email } = req.params; // Extract user_email from path parameters
+        const sessions = await User.find({ user_email }); // Find sessions for the specific user
+        if (sessions.length === 0) {
+            return res.status(404).send({ message: 'No data found for this user' });
+        }
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve user', error: error.message });
+    }
+});
+
+// ---------------------------------------------------------------------------
+
+// POST endpoint to add a new career counseling session
+app.post('/upload-career-counseling', async (req, res) => {
+    try {
+        const newSession = new CareerCounseling(req.body);
+        await newSession.save();
+        res.status(201).send({ message: 'New counseling session added', data: newSession });
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to add session', error: error.message });
+    }
+});
+  
+// GET endpoint to retrieve all career counseling sessions
+app.get('/get-all-career-counseling', async (req, res) => {
+    try {
+        const sessions = await CareerCounseling.find();
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve sessions', error: error.message });
+    }
+});
+
+app.get('/get-career-counseling/:user_email', async (req, res) => {
+    try {
+        const { user_email } = req.params; // Extract user_email from path parameters
+        const sessions = await CareerCounseling.find({ user_email }); // Find sessions for the specific user
+        if (sessions.length === 0) {
+            return res.status(404).send({ message: 'No sessions found for this user' });
+        }
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve sessions', error: error.message });
+    }
+});
+
+// ---------------------------------------------------------------------------
+
+// POST endpoint to add a new career counseling session
+app.post('/upload-course-assessment', async (req, res) => {
+    try {
+        const newSession = new CourseAssessment(req.body);
+        await newSession.save();
+        res.status(201).send({ message: 'New Course Assessment session added', data: newSession });
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to add session', error: error.message });
+    }
+});
+  
+// GET endpoint to retrieve all career counseling sessions
+app.get('/get-all-course-assessment', async (req, res) => {
+    try {
+        const sessions = await CourseAssessment.find();
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve sessions', error: error.message });
+    }
+});
+
+app.get('/get-course-assessment/:user_email', async (req, res) => {
+    try {
+        const { user_email } = req.params; // Extract user_email from path parameters
+        const sessions = await CourseAssessment.find({ user_email }); // Find sessions for the specific user
+        if (sessions.length === 0) {
+            return res.status(404).send({ message: 'No sessions found for this user' });
+        }
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve sessions', error: error.message });
+    }
+});
+
+// ---------------------------------------------------------------------------
+// need to use this to create question id
+const { ObjectId } = require('mongoose').Types;
+
+// Example of creating a new ObjectId
+const id = new ObjectId(); // This will create a new valid ObjectId
+// Convert ObjectId to string
+const stringId = id.toString();
+
+console.log(stringId);
+// ---------------------------------------------------------------------------
+
+// POST endpoint to add a new career counseling session
+app.post('/upload-question', async (req, res) => {
+    try {
+        const newSession = new Question(req.body);
+        await newSession.save();
+        res.status(201).send({ message: 'New Question added', data: newSession });
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to add Question', error: error.message });
+    }
+});
+  
+// GET endpoint to retrieve all career counseling sessions
+app.get('/get-all-question', async (req, res) => {
+    try {
+        const sessions = await Question.find();
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve Question', error: error.message });
+    }
+});
+
+app.get('/get-question/:user_email', async (req, res) => {
+    try {
+        const { user_email } = req.params; // Extract user_email from path parameters
+        const sessions = await Question.find({ user_email }); // Find sessions for the specific user
+        if (sessions.length === 0) {
+            return res.status(404).send({ message: 'No Question found for this user' });
+        }
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve Question', error: error.message });
+    }
+});
+
+// ---------------------------------------------------------------------------
+
 // // example for adding user
 // const newUser = new User({
 //   user_name: 'Sattish',

@@ -1,0 +1,14 @@
+# POST http://localhost:5501/upload-user
+# Content-Type: application/json
+
+# {
+#   "user_email": "yyt@example.com",
+#   "user_name": "yyt",
+#   "user_age": 25
+# }
+
+GET http://localhost:5501/get-all-user
+
+# GET http://localhost:5501/get-user/STH@example.com
+
+# GET http://localhost:5501/get-career-counseling/123@example.com
