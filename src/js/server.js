@@ -71,7 +71,7 @@ app.post('/signup', async (req, res) => {
     const userRef = db.ref(`users/${userId}`);
     await userRef.set({ username: username })
     // redirect to interest page form
-    res.status(200).json({ redirect: '/dist/login.html' });
+    res.status(200).json({ redirect: '/dist/assessment.html' });
 });
 
 // Sign in route
@@ -88,17 +88,6 @@ app.post('/signin', async (req, res) => {
             res.status(401).json({ alert: 'Invalid email or password! Please try again.' });
         });
 });
-
-// Protect routes
-// app.get('loginverify', async (req, res) => {
-//     firebase.auth().onAuthStateChanged((user) => {
-//         if (user) {
-//             res.status(200).json({ message: "User is signed in!" });
-//         } else {
-//             res.status(401).json({ alert: 'User is not signed in!' });
-//         }
-//     });
-// })
 
 // Sign out route
 // app.get('/signout', async (req, res) => {
