@@ -23,7 +23,9 @@ submitButton.addEventListener('click', function () {
                     question_one_ans: Array.from(document.querySelectorAll('input[name="q1"]:checked'))
                                         .map(input => input.value)
                                         .join(', '),
-                    question_two_ans: document.querySelector('input[name="q2"]:checked')?.value || '',
+                    question_two_ans: Array.from(document.querySelectorAll('input[name="q2"]:checked'))
+                                        .map(input => input.value)
+                                        .join(', '),
                     question_three_ans: document.querySelector('input[name="q3"]:checked')?.value || '',
                     question_four_ans: document.querySelector('input[name="q4"]:checked')?.value || '',
                     question_five_ans: document.getElementById('q5').value
