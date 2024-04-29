@@ -125,34 +125,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
-<script>
-    const registrationButton = document.getElementById('registrationButton');
-    registrationButton.addEventListener('click', function () {
-        const username = document.getElementById('username').value;
-        const email = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
-
-
-        fetch('http://localhost:5501/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ username, email, password }),
-        })
-        .then(resp => resp.json())
-        .then(data => {
-            if (data.redirect) {
-                window.location.href = data.redirect;
-            } else if (data.alert) {
-                alert(data.alert);
-            } else {
-                alert('Error occurred!');
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-        })
-    });
-</script>
+<script src="js/register.js"></script>
 </html>

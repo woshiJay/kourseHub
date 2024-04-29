@@ -24,8 +24,8 @@
     <nav class="navbar navbar-light bg-light sticky-top">
         <div class="container-fluid">
             <div class="d-flex mx-5">
-                <a href="#"><img src="./assets/img/logo.jpg" class="img-fluid" width="50" height="30" alt="logo"></a>
-                <a class="navbar-brand" href="#!">
+                <a href="/dist/course.html"><img src="./assets/img/logo.jpg" class="img-fluid" width="50" height="30" alt="logo"></a>
+                <a class="navbar-brand" href="/dist/course.html">
                     <h2>KourseHub</h2>
                 </a>
                 <form class="d-flex" role="search">
@@ -201,9 +201,9 @@
             <!-- Continue your course -->
             <div class="row my-5">
                 <h3 class="mb-4">Continue your course</h3>
-                <a href="quiz.html">
+                <a href="quiz.html" class="text-decoration-none">
                     <div class="col">
-                        <div class="text-dark text-decoration-none p-4 border border-dark rounded w-100 mb-4">
+                        <div class="text-dark p-4 border border-dark rounded w-100 mb-4">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div>
                                     <p class="fs-5 fw-light">COURSE</p>
@@ -385,19 +385,6 @@
         // This toggles the 'd-none' class which controls the visibility
         chatWindow.classList.toggle('d-none');
     });
-    // Sign Out
-    const signOutButton = document.getElementById('signOutButton');
-    signOutButton.addEventListener('click', () => {
-        sessionStorage.removeItem('userId');
-        fetch(`http://localhost:5501/signout`)
-            .then(resp => resp.json())
-            .then(data => {
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-    });
-
     // Function to close the chat window
     function closeChatWindow() {
         document.getElementById('chatWindow').classList.add('d-none');
@@ -427,6 +414,7 @@
 
 <!-- Core theme JS-->
 <script src="js/scripts.js"></script>
+<script type="module" src="js/logout.js"></script>
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 <!-- * *                               SB Forms JS                               * *-->
 <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

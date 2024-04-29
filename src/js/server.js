@@ -88,15 +88,28 @@ app.post('/signin', async (req, res) => {
         });
 });
 
+// Protect routes
+// app.get('loginverify', async (req, res) => {
+//     firebase.auth().onAuthStateChanged((user) => {
+//         if (user) {
+//             res.status(200).json({ message: "User is signed in!" });
+//         } else {
+//             res.status(401).json({ alert: 'User is not signed in!' });
+//         }
+//     });
+// })
+
 // Sign out route
-app.get('/signout', async (req, res) => {
-    firebaseAuth.getAuth().signOut()
-        .then(() => {
-            res.status(200).json({ message: "User signed out successfully!" })
-        })
-        .catch((error) => {
-        });
-});
+// app.get('/signout', async (req, res) => {
+//     firebaseAuth.getAuth().signOut()
+//         .then(() => {
+//             sessionStorage.removeItem('userId');
+//             window.location.href = 'index.html';
+//             res.status(200).json({ message: "User signed out successfully!" })
+//         })
+//         .catch((error) => {
+//         });
+// });
 
 // Get username route
 app.get('/get-username', async (req, res) => {
