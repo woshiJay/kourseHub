@@ -66,7 +66,8 @@ app.post('/signup', async (req, res) => {
                 res.status(400).json({ alert: error.code })
             }
         })
-
+        
+    if (!userRecord) return;
     const userId = userRecord.uid;
     const userRef = db.ref(`users/${userId}`);
     await userRef.set({ username: username })
