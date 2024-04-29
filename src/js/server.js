@@ -150,14 +150,14 @@ mongoose.connect(process.env.MONGODB_URI, {})
 
 // Define the User schema
 const userSchema = new Schema({
-  user_email: { type: String, required: true, unique: true },
-  user_name: String,
+  user_email: String,
+  user_name: { type: String, required: true, unique: true },
   user_age: Number
 });
 
 // Define the Career Counseling schema
-const careerCounselingSchema = new Schema({
-  user_email: { type: String, ref: 'User', required: true },
+const interestSchema = new Schema({
+  user_name: { type: String, ref: 'User', required: true },
   question_one_ans: String,
   question_two_ans: String,
   question_three_ans: String,
@@ -167,7 +167,7 @@ const careerCounselingSchema = new Schema({
 
 // Define the Course Assessment schema
 const courseAssessmentSchema = new Schema({
-  user_email: { type: String, ref: 'User', required: true },
+  user_name: { type: String, ref: 'User', required: true },
   question_one_ans: String,
   question_two_ans: String,
   question_three_ans: String,
@@ -178,25 +178,43 @@ const courseAssessmentSchema = new Schema({
 // Define the Question schema
 const questionSchema = new Schema({
   question_id: { type: Schema.Types.ObjectId, required: true, unique: true },
-  user_email: { type: String, ref: 'User' },
+  user_name: { type: String, ref: 'User' },
   course: String,
   chapter: String,
   question: String,
   answer: String
 });
 
+// Course Schema
+const courseSchema = new Schema({
+    course_id: { type: Schema.Types.ObjectId, required: true, unique: true },
+    course_name: { type: String, required: true },
+    course_people: [{ type: String }], // Assuming this lists people related to the course
+  });
+  
+  // User-Course Schema for Many-to-Many Relationship
+  const userCourseSchema = new Schema({
+    user_course_id: { type: Schema.Types.ObjectId, required: true, unique: true },
+    course_name: { type: String, ref: 'Course', required: true }, // Refers to a course
+    user_name: { type: String, ref: 'User', required: true }, // Refers to a user
+  });
+
 // Create models from the schemas
 const User = mongoose.model('User', userSchema);
-const CareerCounseling = mongoose.model('CareerCounseling', careerCounselingSchema);
+const Interest = mongoose.model('Interest', interestSchema);
 const CourseAssessment = mongoose.model('CourseAssessment', courseAssessmentSchema);
 const Question = mongoose.model('Question', questionSchema);
+const Course = mongoose.model('Course', courseSchema);
+const UserCourse = mongoose.model('UserCourse', userCourseSchema);
 
 // Export the models
 module.exports = {
     User,
-    CareerCounseling,
+    Interest,
     CourseAssessment,
-    Question
+    Question,
+    Course,
+    UserCourse
   };
 
 // Route to handle POST request
@@ -230,10 +248,10 @@ app.get('/get-all-user', async (req, res) => {
     }
   });
   
-  app.get('/get-user/:user_email', async (req, res) => {
+  app.get('/get-user/:user_name', async (req, res) => {
     try {
-        const { user_email } = req.params; // Extract user_email from path parameters
-        const sessions = await User.find({ user_email }); // Find sessions for the specific user
+        const { user_name } = req.params; // Extract user_email from path parameters
+        const sessions = await User.find({ user_name }); // Find sessions for the specific user
         if (sessions.length === 0) {
             return res.status(404).send({ message: 'No data found for this user' });
         }
@@ -246,30 +264,31 @@ app.get('/get-all-user', async (req, res) => {
 // ---------------------------------------------------------------------------
 
 // POST endpoint to add a new career counseling session
-app.post('/upload-career-counseling', async (req, res) => {
+app.post('/upload-interest', async (req, res) => {
     try {
-        const newSession = new CareerCounseling(req.body);
+        const newSession = new Interest(req.body);
         await newSession.save();
-        res.status(201).send({ message: 'New counseling session added', data: newSession });
+        // res.status(201).send({ message: 'New counseling session added', data: newSession });
+        res.status(200).json({ redirect: '/dist/login.html' });
     } catch (error) {
         res.status(500).send({ message: 'Failed to add session', error: error.message });
     }
 });
   
 // GET endpoint to retrieve all career counseling sessions
-app.get('/get-all-career-counseling', async (req, res) => {
+app.get('/get-all-interest', async (req, res) => {
     try {
-        const sessions = await CareerCounseling.find();
+        const sessions = await Interest.find();
         res.json(sessions);
     } catch (error) {
         res.status(500).send({ message: 'Failed to retrieve sessions', error: error.message });
     }
 });
 
-app.get('/get-career-counseling/:user_email', async (req, res) => {
+app.get('/get-interest/:user_name', async (req, res) => {
     try {
-        const { user_email } = req.params; // Extract user_email from path parameters
-        const sessions = await CareerCounseling.find({ user_email }); // Find sessions for the specific user
+        const { user_name } = req.params; // Extract user_email from path parameters
+        const sessions = await Interest.find({ user_name }); // Find sessions for the specific user
         if (sessions.length === 0) {
             return res.status(404).send({ message: 'No sessions found for this user' });
         }
@@ -302,10 +321,10 @@ app.get('/get-all-course-assessment', async (req, res) => {
     }
 });
 
-app.get('/get-course-assessment/:user_email', async (req, res) => {
+app.get('/get-course-assessment/:user_name', async (req, res) => {
     try {
-        const { user_email } = req.params; // Extract user_email from path parameters
-        const sessions = await CourseAssessment.find({ user_email }); // Find sessions for the specific user
+        const { user_name } = req.params; // Extract user_email from path parameters
+        const sessions = await CourseAssessment.find({ user_name }); // Find sessions for the specific user
         if (sessions.length === 0) {
             return res.status(404).send({ message: 'No sessions found for this user' });
         }
@@ -316,15 +335,15 @@ app.get('/get-course-assessment/:user_email', async (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// need to use this to create question id
-const { ObjectId } = require('mongoose').Types;
+// // need to use this to create question id
+// const { ObjectId } = require('mongoose').Types;
 
-// Example of creating a new ObjectId
-const id = new ObjectId(); // This will create a new valid ObjectId
-// Convert ObjectId to string
-const stringId = id.toString();
+// // Example of creating a new ObjectId
+// const id = new ObjectId(); // This will create a new valid ObjectId
+// // Convert ObjectId to string
+// const stringId = id.toString();
 
-console.log(stringId);
+// console.log(stringId);
 // ---------------------------------------------------------------------------
 
 // POST endpoint to add a new career counseling session
@@ -348,10 +367,10 @@ app.get('/get-all-question', async (req, res) => {
     }
 });
 
-app.get('/get-question/:user_email', async (req, res) => {
+app.get('/get-question/:user_name', async (req, res) => {
     try {
-        const { user_email } = req.params; // Extract user_email from path parameters
-        const sessions = await Question.find({ user_email }); // Find sessions for the specific user
+        const { user_name } = req.params; // Extract user_email from path parameters
+        const sessions = await Question.find({ user_name }); // Find sessions for the specific user
         if (sessions.length === 0) {
             return res.status(404).send({ message: 'No Question found for this user' });
         }
@@ -363,6 +382,89 @@ app.get('/get-question/:user_email', async (req, res) => {
 
 // ---------------------------------------------------------------------------
 
+// POST route to add a new course
+app.post('/upload-course', async (req, res) => {
+    try {
+      const newCourse = new Course(req.body);
+      await newCourse.save();
+      res.status(201).send({ message: 'Course added successfully', data: newCourse });
+    } catch (error) {
+      res.status(500).send({ message: 'Error adding course', error: error.message });
+    }
+  });
+
+app.get('/get-course', async (req, res) => {
+    try {
+        const sessions = await Course.find();
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve Question', error: error.message });
+    }
+});
+
+app.get('/get-course/:course_name', async (req, res) => {
+    try {
+        const { course_name } = req.params; // Extract user_email from path parameters
+        const sessions = await Course.find({ course_name }); // Find sessions for the specific user
+        if (sessions.length === 0) {
+            return res.status(404).send({ message: 'No course name' });
+        }
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve Question', error: error.message });
+    }
+});
+
+  // ---------------------------------------------------------------------------
+  
+  // POST route to add a user-course relationship
+  app.post('/upload-user-course', async (req, res) => {
+    try {
+      const newUserCourse = new UserCourse(req.body);
+      await newUserCourse.save();
+      res.status(201).send({ message: 'User-Course relationship added successfully', data: newUserCourse });
+    } catch (error) {
+      res.status(500).send({ message: 'Error adding user-course relationship', error: error.message });
+    }
+  });
+
+
+  app.get('/get-user-course', async (req, res) => {
+    try {
+        const sessions = await UserCourse.find();
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve Question', error: error.message });
+    }
+});
+
+app.get('/get-user-course/:course_name', async (req, res) => {
+    try {
+        const { course_name } = req.params; // Extract user_email from path parameters
+        const sessions = await UserCourse.find({ course_name }); // Find sessions for the specific user
+        if (sessions.length === 0) {
+            return res.status(404).send({ message: 'No course name' });
+        }
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve Question', error: error.message });
+    }
+});
+
+app.get('/get-user-course/:user_name', async (req, res) => {
+    try {
+        const { user_name } = req.params; // Extract user_email from path parameters
+        const sessions = await UserCourse.find({ user_name }); // Find sessions for the specific user
+        if (sessions.length === 0) {
+            return res.status(404).send({ message: 'No user name' });
+        }
+        res.json(sessions);
+    } catch (error) {
+        res.status(500).send({ message: 'Failed to retrieve Question', error: error.message });
+    }
+});
+
+// ---------------------------------------------------------------------------
 // // example for adding user
 // const newUser = new User({
 //   user_name: 'Sattish',

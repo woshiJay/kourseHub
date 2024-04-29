@@ -22,6 +22,8 @@ loginButton.addEventListener('click', function () {
     .then(data => {
         if (data.uid) {
            sessionStorage.setItem('userId', data.uid);
+           // check user name
+           
            window.location.href = 'profile.html'
         } else if (data.alert) {
             alert(data.alert);
