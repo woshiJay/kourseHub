@@ -123,6 +123,9 @@ app.get('/get-username', async (req, res) => {
     }
 });
 
+// Get user email
+
+
 // AI Chatbot + Review route
 app.post('/ai-review', async (req, res) => {
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
