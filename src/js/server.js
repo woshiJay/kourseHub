@@ -70,6 +70,7 @@ app.post('/signup', async (req, res) => {
     const userId = userRecord.uid;
     const userRef = db.ref(`users/${userId}`);
     await userRef.set({ username: username })
+    // redirect to interest page form
     res.status(200).json({ redirect: '/dist/login.html' });
 });
 
