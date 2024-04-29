@@ -1,10 +1,10 @@
-# GET http://localhost:5501/get-all-career-counseling
+# GET http://localhost:5501/get-all-interest
 
-# POST http://localhost:5501/upload-career-counseling
+# POST http://localhost:5501/upload-interest
 # Content-Type: application/json
 
 # {
-#     "user_email": "abc@example.com",
+#     "user_name": "abc",
 #     "question_one_ans": "test2",
 #     "question_two_ans": "test2",
 #     "question_three_ans": "test2",
@@ -12,4 +12,4 @@
 #     "question_five_ans": "test2"
 # }
 
-# GET http://localhost:5501/get-career-counseling/123@example.com
+GET http://localhost:5501/get-interest/yeetao
