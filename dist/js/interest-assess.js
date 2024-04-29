@@ -26,11 +26,11 @@ submitButton.addEventListener('click', function () {
                     question_two_ans: Array.from(document.querySelectorAll('input[name="q2"]:checked'))
                                         .map(input => input.value)
                                         .join(', '),
-                    question_three_ans: document.querySelector('q3').value,
+                    question_three_ans: document.getElementById('q3').value,
                     question_four_ans: document.querySelector('input[name="q4"]:checked')?.value || '',
                     question_five_ans: document.getElementById('q5').value
                 };
-                
+                console.log(answers);
                 try {
                     // Make a POST request to the backend
                     const response = fetch('http://localhost:5501/upload-interest', {
@@ -40,16 +40,7 @@ submitButton.addEventListener('click', function () {
                         },
                         body: JSON.stringify(answers)
                     });
-
-                    const result = response.json();
-
-                    if (response.ok) {
-                        alert('Data submitted successfully');
-                        console.log(result);
-                    } else {
-                        alert('Failed to submit data');
-                        console.error(result);
-                    }
+                    window.location.href = 'profile.html';
                 } catch (error) {
                     console.error('Error:', error);
                 }
@@ -59,54 +50,20 @@ submitButton.addEventListener('click', function () {
             });
     }
 
-    // Gather answers from the form
-    // const answers = {
-    //     user_name:"user",
-    //     question_one_ans: Array.from(document.querySelectorAll('input[name="q1"]:checked'))
-    //                           .map(input => input.value)
-    //                           .join(', '),
-    //     question_two_ans: document.querySelector('input[name="q2"]:checked')?.value || '',
-    //     question_three_ans: document.querySelector('input[name="q3"]:checked')?.value || '',
-    //     question_four_ans: document.querySelector('input[name="q4"]:checked')?.value || '',
-    //     question_five_ans: document.getElementById('q5').value
-    // };
-    
-    // try {
-    //     // Make a POST request to the backend
-    //     const response = fetch('http://localhost:5501/upload-interest', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         },
-    //         body: JSON.stringify(answers)
-    //     });
-
-    //     const result = response.json();
-
-    //     if (response.ok) {
-    //         alert('Data submitted successfully');
-    //         console.log(result);
-    //     } else {
-    //         alert('Failed to submit data');
-    //         console.error(result);
-    //     }
-    // } catch (error) {
-    //     console.error('Error:', error);
-    // }
+    //  -----------------------------------------------------------------------
 
     
+
+    // --------------------------------------------------------------------
 
     // code
-    alert("You have completed the interest assessment!");
-    alert("Recommendations will be tailored on your interests.")
-    alert("Please login again to view your recommendations.")
-    // window.location.href = 'login.html';
+    alert("You have completed the interest assessment!\nRecommendations will be tailored on your interests.");
+    // alert("Please login again to view your recommendations.")
+    // window.location.href = 'profile.html';
 });
 
 skipButton.addEventListener('click', function () {
     // code
-    alert("You have skipped the interest assessment!");
-    alert("Recommendations will be shuffled.")
-    alert("Please login again to view your recommendations.")
-    window.location.href = 'login.html';
+    alert("You have skipped the interest assessment!\nRecommendations will be shuffled.");
+    window.location.href = 'profile.html';
 });

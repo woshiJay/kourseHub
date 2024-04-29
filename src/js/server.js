@@ -268,8 +268,7 @@ app.post('/upload-interest', async (req, res) => {
     try {
         const newSession = new Interest(req.body);
         await newSession.save();
-        // res.status(201).send({ message: 'New counseling session added', data: newSession });
-        res.status(200).json({ redirect: '/dist/login.html' });
+
     } catch (error) {
         res.status(500).send({ message: 'Failed to add session', error: error.message });
     }
