@@ -172,8 +172,7 @@ const courseAssessmentSchema = new Schema({
   question_one_ans: String,
   question_two_ans: String,
   question_three_ans: String,
-  question_four_ans: String,
-  question_five_ans: String
+  classification: String
 });
 
 // Define the Question schema
