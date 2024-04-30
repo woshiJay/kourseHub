@@ -1,15 +1,14 @@
-# GET http://localhost:5501/get-all-course-assessment
+GET http://localhost:5501/get-all-course-assessment
 
 # POST http://localhost:5501/upload-course-assessment
 # Content-Type: application/json
 
 # {
-#     "user_email": "aa@example.com",
+#     "user_name": "aa@example.com",
 #     "question_one_ans": "test2",
 #     "question_two_ans": "test2",
 #     "question_three_ans": "test2",
-#     "question_four_ans": "test2",
-#     "question_five_ans": "test2"
+#     "classification": "test2"
 # }
 
-GET http://localhost:5501/get-course-assessment/ds@example.com
+# GET http://localhost:5501/get-course-assessment/ds@example.com
