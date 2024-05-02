@@ -12,4 +12,11 @@
 #     "answer": "im biubiubiu."
 # }
 
-GET http://localhost:5501/get-question/yyt@example.com
+# GET http://localhost:5501/get-question/yyt@example.com
+
+POST http://localhost:5501/ai-review
+Content-Type: application/json
+
+{
+  "promptmsg": "What is deep learning?"
+}
