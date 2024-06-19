@@ -3,7 +3,7 @@
     "name": "koursehub",
     "version": "1.0.0",
     "scripts": {
-        "build": "npm run clean && npm run build:pug && npm run build:scss && npm run build:scripts && npm run build:assets",
+        "build": "npm run clean && npm run build:pug && npm run build:scss && npm run build:scripts && npm run build:assets && npm run build:threejs",
         "build:assets": "node scripts/build-assets.js",
         "build:pug": "node scripts/build-pug.js",
         "build:scripts": "node scripts/build-scripts.js",
@@ -41,7 +41,8 @@
         "firebase-admin": "^12.0.0",
         "mongodb": "^6.5.0",
         "mongoose": "^8.3.2",
-        "openai": "^4.24.1"
+        "openai": "^4.24.1",
+        "three": "^0.165.0"
     },
     "devDependencies": {
         "autoprefixer": "10.4.14",
