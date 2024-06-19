@@ -1,20 +1,19 @@
 'use strict';
-const pug = require('pug');
-const fs = require('fs');
-const path = require('path');
+const upath = require('upath');
+const sh = require('shelljs');
+const renderPug = require('./render-pug');
 
-const srcDir = path.resolve(__dirname, '../src/pug');
-const distDir = path.resolve(__dirname, '../dist');
+const srcPath = upath.resolve(upath.dirname(__filename), '../src');
 
-fs.readdir(srcDir, (err, files) => {
-    if (err) throw err;
+sh.find(srcPath).forEach(_processFile);
 
-    files.forEach(file => {
-        if (path.extname(file) === '.pug') {
-            const filePath = path.join(srcDir, file);
-            const outputFilePath = path.join(distDir, path.basename(file, '.pug') + '.html');
-            const html = pug.renderFile(filePath);
-            fs.writeFileSync(outputFilePath, html);
-        }
-    });
-});
+function _processFile(filePath) {
+    if (
+        filePath.match(/\.pug$/)
+        && !filePath.match(/include/)
+        && !filePath.match(/mixin/)
+        && !filePath.match(/\/pug\/layouts\//)
+    ) {
+        renderPug(filePath);
+    }
+}
