@@ -68,7 +68,7 @@ nextButton.addEventListener('click', function () {
                         },
                         body: JSON.stringify(answers)
                     });
-                    window.location.href = 'profile.html';
+                    window.location.href = 'sample-course.html';
                 } catch (error) {
                     console.error('Error:', error);
                 }

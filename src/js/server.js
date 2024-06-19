@@ -391,6 +391,8 @@ app.post('/upload-course-assessment', async (req, res) => {
     try {
         const newSession = new CourseAssessment(req.body);
         await newSession.save();
+        // route to sample-course.html
+        
         res.status(201).send({ message: 'New Course Assessment session added', data: newSession });
     } catch (error) {
         res.status(500).send({ message: 'Failed to add session', error: error.message });
