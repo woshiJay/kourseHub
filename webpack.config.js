@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/js/threeSetup.js',
+    entry: './dist/js/threeSetup.js',
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, 'dist/js'),
