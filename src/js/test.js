@@ -20,6 +20,7 @@ const {
       topP: 1,
       maxOutputTokens: 2048,
     };
+    
   
     const safetySettings = [
     ];
