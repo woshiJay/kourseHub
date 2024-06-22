@@ -2,9 +2,9 @@
 # Content-Type: application/json
 
 # {
-#   "user_email": "yyt@example.com",
-#   "user_name": "yyt",
-#   "user_age": 25
+#   "user_email": "figo@example.com",
+#   "user_name": "figo",
+#   "user_age": 24
 # }
 
 GET http://localhost:5501/get-all-user
